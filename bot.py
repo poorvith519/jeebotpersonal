@@ -3,7 +3,7 @@ import json
 import asyncio
 from datetime import datetime, time
 import pytz
-from groq import Groq
+from openai import OpenAI
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import (
     Application, CommandHandler, MessageHandler,
@@ -16,7 +16,7 @@ GROQ_API_KEY   = os.environ["GROQ_API_KEY"]
 IST            = pytz.timezone("Asia/Kolkata")
 DATA_FILE      = "data.json"
 
-groq_client = Groq(api_key=GROQ_API_KEY)
+groq_client = OpenAI(api_key=GROQ_API_KEY, base_url="https://api.groq.com/openai/v1")
 
 SYSTEM_PROMPT = """You are JEE Sensei — a sharp, no-nonsense AI tutor exclusively for JEE Main & Advanced preparation.
 
